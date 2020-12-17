@@ -19,7 +19,8 @@ Page({
     onLoad: function (options) {
         db.collection('coupons').get().then(res => {
             const tabs = res.data
-            console.log(tabs)
+            console.log(res)
+            console.log(11111,res.data)
 
             let all = {
                 title: '全部',
