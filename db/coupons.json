@@ -1,5 +1,5 @@
 {
-    "_id": "4fb129165fc1ba0b007aa0ac6401caf0",
+    "_id": "4fb12bc1ba001c007aa0ac649165faf0",
     "title": "打车",
     "icon": "cloud://cloudprod-2gl94k7r8f6fa06d.636c-cloudprod-2gl94k7r8f6fa06d-1304539053/vip.png",
     "coupon": [
@@ -16,13 +16,13 @@
         },
         {
             "name": "滴滴打车出行券",
-            "icon": "cloud://test-b602t.7465-test-b602t-1253275554/coupon-banenr/vip.png",
-            "bannerPic": "cloud://test-b602t.7465-test-b602t-1253275554/coupon-banenr/didibanner.jpg",
+            "icon": "cloud://cloudprod-2gl94k7r8f6fa06d.636c-cloudprod-2gl94k7r8f6fa06d-1304539053/vip.png",
+            "bannerPic": "cloud://cloudprod-2gl94k7r8f6fa06d.636c-cloudprod-2gl94k7r8f6fa06d-1304539053/didibanner.png	",
             "url": "",
             "type": 1,
             "minapp": {
                 "appid": "wxaf35009675aa0b2a",
-                "path": "passenger-recommend/views/coupon/index?sharecode=bv0pktcl5g1r04efs3gg&template=1&channel_id=1100000090&scene=14&root_dchn=gq2mZb"
+                "path": "passenger-recommend/views/coupon/index?sharecode=bvetruoq2lt596astt4g&template=1&channel_id=1100000090&scene=14&root_dchn=gq2mZb"
             }
         }
     ]

@@ -1,0 +1,18 @@
+{
+    "_id": "49165fbc1b4fb127aa0ac6a001c00af0",
+    "title": "咖啡",
+    "icon": "cloud://cloudprod-2gl94k7r8f6fa06d.636c-cloudprod-2gl94k7r8f6fa06d-1304539053/ruixing.jpg",
+    "coupon": [
+        {
+            "name": "瑞幸咖啡",
+            "icon": "cloud://cloudprod-2gl94k7r8f6fa06d.636c-cloudprod-2gl94k7r8f6fa06d-1304539053/ruixing.jpg",
+            "bannerPic": "cloud://cloudprod-2gl94k7r8f6fa06d.636c-cloudprod-2gl94k7r8f6fa06d-1304539053/ruixingbanner.png",
+            "url": "",
+            "type": 1,
+            "minapp": {
+                "appid": "wx21c7506e98a2fe75",
+                "path": "pages/share/inviter/inviter?locationType=1&shareType=3&target=-SlbDxRqsM7XTCCBAiYWGw%3D%3D&activityNo=NR201810220001&channelInviteCode=undefined"
+            }
+        }
+    ]
+}

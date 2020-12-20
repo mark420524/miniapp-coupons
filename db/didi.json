@@ -1,0 +1,18 @@
+{
+    "_id": "4fb12bc1ba001c007aa0ac649165faf0",
+    "title": "打车",
+    "icon": "cloud://cloudprod-2gl94k7r8f6fa06d.636c-cloudprod-2gl94k7r8f6fa06d-1304539053/vip.png",
+    "coupon": [
+        {
+            "name": "滴滴打车出行券",
+            "icon": "cloud://cloudprod-2gl94k7r8f6fa06d.636c-cloudprod-2gl94k7r8f6fa06d-1304539053/vip.png",
+            "bannerPic": "cloud://cloudprod-2gl94k7r8f6fa06d.636c-cloudprod-2gl94k7r8f6fa06d-1304539053/didibanner.png",
+            "url": "",
+            "type": 1,
+            "minapp": {
+                "appid": "wxaf35009675aa0b2a",
+                "path": "passenger-recommend/views/coupon/index?sharecode=bvetruoq2lt596astt4g&template=1&channel_id=1100000090&scene=14&root_dchn=gq2mZb"
+            }
+        }
+    ]
+}
