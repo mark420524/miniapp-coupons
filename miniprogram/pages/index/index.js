@@ -133,5 +133,16 @@ Page({
             path: this.data.msg.path,
             imageUrl: this.data.msg.imageUrl,
         }
-    }
+    },
+
+    pageLifetimes: {
+        show() {
+          if (typeof this.getTabBar === 'function' &&
+            this.getTabBar()) {
+            this.getTabBar().setData({
+              selected: 0
+            })
+          }
+        }
+      }
 })

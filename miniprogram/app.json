@@ -1,7 +1,10 @@
 {
   "pages": [
+    
     "pages/index/index",
-    "pages/custom-tab/index"
+    "pages/search/index",
+    "pages/custom-tab-bar/index"
+    
   ],
   "window": {
     "navigationBarTextStyle": "white",
@@ -16,12 +19,15 @@
     "selectedColor": "#000000",
     "backgroundColor": "#000000",
     "list": [{
-      "pagePath": "pages/custom-tab/index",
+      "pagePath": "pages/index/index",
       "text": "组件"
     }, {
-      "pagePath": "pages/custom-tab/index",
+      "pagePath": "pages/search/index",
       "text": "接口"
     }]
+  },
+  "usingComponents": {
+    "tabBar":"pages/custom-tab-bar/index"
   },
   "sitemapLocation": "sitemap.json",
   "style": "v2"

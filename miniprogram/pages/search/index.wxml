@@ -1,0 +1,21 @@
+<van-search
+  value="{{ value }}"
+  shape="round"
+  background="#0bb9b6"
+  placeholder="请输入搜索关键词"
+  bind:search="onSearch"
+/>
+
+<van-card
+  num="2"
+  tag="标签"
+  price="10.00"
+  desc="描述信息"
+  title="商品标题"
+  thumb="{{ imageUrl }}"
+>
+  <view slot="footer">
+    <van-button size="mini">按钮</van-button>
+    <van-button size="mini">按钮</van-button>
+  </view>
+</van-card>

@@ -12,7 +12,7 @@ Page({
             name: "home",
             text: "优惠"
           }, {
-            pagePath: "",
+            pagePath: "/pages/search/index",
             iconPath: "search",
             selectedIconPath: "search",
             text: "查找"
@@ -22,5 +22,12 @@ Page({
     onChange(event) {
         this.setData({ active: event.detail });
       },
-    
+      switchTab(e) {
+        const data = e.currentTarget.dataset
+        const url = data.path
+        wx.switchTab({url})
+        this.setData({
+          selected: data.index
+        })
+      }
 })

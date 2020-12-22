@@ -2,5 +2,6 @@
     "usingComponents": {
         "van-tabbar": "../../components/dist/tabbar/index",
         "van-tabbar-item": "../../components/dist/tabbar-item/index"
-    }
+    },
+    "component":true
 }
