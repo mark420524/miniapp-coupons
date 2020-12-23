@@ -3,7 +3,7 @@
     
     "pages/index/index",
     "pages/search/index",
-    "pages/custom-tab-bar/index"
+    "custom-tab-bar/index"
     
   ],
   "window": {

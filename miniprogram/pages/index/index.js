@@ -134,15 +134,15 @@ Page({
             imageUrl: this.data.msg.imageUrl,
         }
     },
-
-    pageLifetimes: {
-        show() {
-          if (typeof this.getTabBar === 'function' &&
+    onShow(){
+        
+        if (typeof this.getTabBar === 'function' &&
             this.getTabBar()) {
+              
             this.getTabBar().setData({
-              selected: 0
+              active: 0
             })
           }
-        }
       }
+    
 })

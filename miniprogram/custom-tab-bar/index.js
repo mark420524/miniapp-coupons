@@ -5,11 +5,11 @@ Page({
      * 页面的初始数据
      */
     data: {
-        active: 'home',
+        active: 0,
         list: [{
             pagePath: "/pages/index/index",
             iconPath: "home-o",
-            name: "home",
+            
             text: "优惠"
           }, {
             pagePath: "/pages/search/index",
@@ -20,14 +20,13 @@ Page({
     },
 
     onChange(event) {
-        this.setData({ active: event.detail });
-      },
-      switchTab(e) {
-        const data = e.currentTarget.dataset
-        const url = data.path
+        
+        const detail = event.detail;
+        this.setData({ active: detail });
+        console.log(detail)
+        const url = this.data.list[detail].pagePath;
+        console.log(url);
         wx.switchTab({url})
-        this.setData({
-          selected: data.index
-        })
-      }
+        
+    }
 })

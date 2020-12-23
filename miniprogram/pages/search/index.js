@@ -15,15 +15,15 @@ Page({
     onClick() {
       console.log('搜索c' + this.data.value);
     },
-
-    pageLifetimes: {
-      show() {
-        if (typeof this.getTabBar === 'function' &&
+    onShow(){
+    
+      if (typeof this.getTabBar === 'function' &&
           this.getTabBar()) {
+    
           this.getTabBar().setData({
-            selected: 0
+            active: 1
           })
         }
-      }
     }
+    
 })
