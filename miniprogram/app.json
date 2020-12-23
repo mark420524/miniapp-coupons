@@ -27,7 +27,7 @@
     }]
   },
   "usingComponents": {
-    "tabBar":"pages/custom-tab-bar/index"
+   
   },
   "sitemapLocation": "sitemap.json",
   "style": "v2"
