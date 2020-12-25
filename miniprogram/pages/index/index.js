@@ -17,7 +17,9 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        db.collection('coupons').get().then(res => {
+        db.collection('coupons')
+            .where({status:1})
+            .orderBy('sort', 'asc').get().then(res => {
             const tabs = res.data
             let all = {
                 title: '全部',
