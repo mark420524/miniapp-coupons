@@ -5,17 +5,27 @@
   placeholder="请输入搜索关键词"
   bind:search="onSearch"
 />
-
-<van-card
-  num="2"
-  tag="标签"
-  price="10.00"
-  desc="描述信息"
-  title="商品标题"
-  thumb="{{ imageUrl }}"
->
-  <view slot="footer">
-    <van-button size="mini">按钮</van-button>
-    <van-button size="mini">按钮</van-button>
-  </view>
-</van-card>
+<view wx:if="{{tabs.length >0}}">
+    <van-tabs bind:change="onChange" active="{{ activeTab }}" swipeable>
+        <van-tab wx:for="{{tabs}}" title="{{item.title}}">
+            <view class="container">
+              <van-card
+                  num="2"
+                  tag="标签"
+                  price="10.00"
+                  desc="描述信息"
+                  title="商品标题"
+                  thumb="{{ imageUrl }}"
+                >
+                  <view slot="footer">
+                    <van-button size="mini">按钮</van-button>
+                    <van-button size="mini">按钮</van-button>
+                  </view>
+                </van-card>               
+            </view>
+        </van-tab>
+    </van-tabs>
+</view>
+<view wx:else class="loading">
+    <van-loading size="30px">加载最多的商品优惠券...</van-loading>
+</view>

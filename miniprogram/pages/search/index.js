@@ -1,4 +1,5 @@
 // miniprogram/pages/index/index.js
+const db = wx.cloud.database()
 Page({
 
     /**
@@ -6,8 +7,22 @@ Page({
      */
     data: {
         value: '',
-        imageUrl:''
+        imageUrl:'',
+        tabs: [],
+        msg: {},
     },
+    onLoad: function (options) {
+      db.collection('goods_type')
+          .where({status:1})
+          .orderBy('sort', 'asc').get().then(res => {
+            console.log(res)
+          const tabs = res.data
+          this.setData({ tabs })
+      })
+
+      
+      
+  },
 
     onSearch() {
       console.log('搜索s' + this.data.value);

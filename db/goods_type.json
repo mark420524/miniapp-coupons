@@ -1,0 +1,27 @@
+{
+    "_id": "1",
+    "title": "京东",
+    "status": 1,
+    "sort": 1
+}
+
+{
+    "_id": "2",
+    "title": "拼多多",
+    "status": 1,
+    "sort": 2
+}
+
+{
+    "_id": "3",
+    "title": "淘宝",
+    "status": 0,
+    "sort": 3
+}
+
+{
+    "_id": "4",
+    "title": "苏宁",
+    "status": 1,
+    "sort": 4
+}
