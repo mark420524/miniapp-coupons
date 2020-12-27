@@ -10,8 +10,8 @@
     "navigationBarTextStyle": "white",
     "navigationBarTitleText": "早晚券",
     "navigationBarBackgroundColor": "#0bb9b6",
-    "backgroundColor": "#FFFFFF",
-    "titleView": false
+    "backgroundColor": "#FFFFFF"
+    
   },
   "tabBar": {
     "custom": true,

@@ -6,7 +6,9 @@ Page({
      * 页面的初始数据
      */
     data: {
+        showOverlay:true,
         value: '',
+        goodsList:[],
         imageUrl:'',
         activeTab: 0,
         tabs: [],
@@ -33,7 +35,10 @@ Page({
       var that = this;
       var tabs = that.data.tabs;
       var currentTab = tabs[index]
-      currentTab['goodsList']=[]
+      if (!currentTab['goodsList']) {
+        currentTab['goodsList']=[]
+      }
+      
       wx.request({
         url: 'http://127.0.0.1:10324/goods', 
         data: {
@@ -45,9 +50,13 @@ Page({
           'content-type': 'application/x-www-form-urlencoded' 
         },
         success (res) {
-          console.log(res.data)
-          currentTab['goodsList']=res.data;
-          that.setData({tabs:tabs})
+          var goodsList = currentTab['goodsList'];
+          if (res.data){
+            res.data.forEach(citem => {
+              goodsList.push(citem)
+            })
+          }
+          that.setData({tabs:tabs,showOverlay:false,goodsList:goodsList})
         }
       })
     },
@@ -73,11 +82,17 @@ Page({
       
       
       const index = e.detail.index
-      this.setData({ activeTab: parseInt(index) })
-      const type = this.data.tabs[index]['_id']
+      this.setData({ activeTab: parseInt(index),page: 1 })
+      var tabs = this.data.tabs;
+      var currentTab = tabs[index]
+      if (!currentTab['goodsList']) {
+        currentTab['goodsList']=[]
+      }
+      
+      const type = tabs[index]['_id']
       //this.getGoods(type)
       console.log(type)
-      this.setData({goods_type:type})
+      this.setData({goods_type:type,goodsList:currentTab['goodsList']})
   },
     onShow(){
     
@@ -88,6 +103,14 @@ Page({
             active: 1
           })
         }
+    },
+    onPullDownRefresh: function() {
+      console.log('pulldown')
+    },
+    onReachBottom: function() {
+      this.data.page++;
+      //this.getGoods(this.data.goods_type, this.data.activeTab)
+      console.log('bottom')
     }
     
 })

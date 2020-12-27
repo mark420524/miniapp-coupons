@@ -5,6 +5,7 @@
         "van-card": "../../components/dist/card/index",
         "van-search": "../../components/dist/search/index",
         "van-button": "../../components/dist/button/index",
-        "van-loading": "../../components/dist/loading/index"
+        "van-loading": "../../components/dist/loading/index",
+        "van-overlay": "../../components/dist/overlay/index"
     }
 }
