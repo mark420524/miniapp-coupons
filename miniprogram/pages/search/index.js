@@ -27,7 +27,9 @@ Page({
           this.setData({ tabs })
           const type = this.data.tabs[0]['_id']
           //
-          this.setData({goods_type:type})
+          this.setData({
+            goods_type:type          
+          })
           this.getGoods(type,0)
       })
     },
