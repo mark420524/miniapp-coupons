@@ -12,7 +12,8 @@ Page({
         tabs: [],
         msg: {},
         page:1,
-        size:10
+        size:10,
+        goods_type:0
     },
     onLoad: function (options) {
       db.collection('goods_type')
@@ -22,10 +23,17 @@ Page({
           const tabs = res.data
           this.setData({ tabs })
           const type = this.data.tabs[0]['_id']
-          //this.getGoods(type)
+          //
+          this.setData({goods_type:type})
+          this.getGoods(type,0)
       })
     },
-    getGoods(type){
+    
+    getGoods(type,index){
+      var that = this;
+      var tabs = that.data.tabs;
+      var currentTab = tabs[index]
+      currentTab['goodsList']=[]
       wx.request({
         url: 'http://127.0.0.1:10324/goods', 
         data: {
@@ -38,6 +46,8 @@ Page({
         },
         success (res) {
           console.log(res.data)
+          currentTab['goodsList']=res.data;
+          that.setData({tabs:tabs})
         }
       })
     },
@@ -47,6 +57,18 @@ Page({
     onClick() {
       console.log('搜索c' + this.data.value);
     },
+    copyLink(e) {
+      
+      const dataset = e.target.dataset;
+      const url = dataset.url;
+      console.log(url)
+      wx.setClipboardData({
+        data: url,
+        success (res) {
+          
+        }
+      })
+    },
     onChange(e) {
       
       
@@ -55,6 +77,7 @@ Page({
       const type = this.data.tabs[index]['_id']
       //this.getGoods(type)
       console.log(type)
+      this.setData({goods_type:type})
   },
     onShow(){
     

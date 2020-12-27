@@ -8,18 +8,19 @@
 <view wx:if="{{tabs.length >0}}">
     <van-tabs bind:change="onChange" active="{{ activeTab }}" swipeable>
         <van-tab wx:for="{{tabs}}" data-id="{{item._id}}" title="{{item.title}}">
-            <view class="container">
-              <van-card
-                  num="2"
-                  tag="标签"
-                  price="10.00"
-                  desc="描述信息"
-                  title="商品标题"
-                  thumb="{{ imageUrl }}"
+            <view class="container" wx:for="{{item.goodsList}}" wx:for-item="v">
+              <van-card 
+                  price="{{v.lowest_price}}"
+                  origin-price="{{v.price}}"
+                  desc="{{v.short_desc}}"
+                  title="{{v.sku_name}}"
+                  thumb-link="{{v.duanzhi}}"
+                  thumb="{{ v.imageUrl }}"
+                  lazy-load="ture"
                 >
                   <view slot="footer">
-                    <van-button size="mini">按钮</van-button>
-                    <van-button size="mini">按钮</van-button>
+                    <van-button bind:click="copyLink" data-url="{{v.duanzhi}}" size="small">点我复制</van-button>
+                    
                   </view>
                 </van-card>               
             </view>
