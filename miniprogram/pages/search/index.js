@@ -15,7 +15,8 @@ Page({
         msg: {},
         page:1,
         size:10,
-        goods_type:0
+        goods_type:0,
+        bottomLoad:false
     },
     onLoad: function (options) {
       db.collection('goods_type')
@@ -108,9 +109,11 @@ Page({
       console.log('pulldown')
     },
     onReachBottom: function() {
+      this.setData({bottomLoad:true})
       this.data.page++;
-      //this.getGoods(this.data.goods_type, this.data.activeTab)
+      this.getGoods(this.data.goods_type, this.data.activeTab)
       console.log('bottom')
+      
     }
     
 })

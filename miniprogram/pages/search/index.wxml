@@ -38,3 +38,6 @@
   </view>
   
 </van-overlay>
+<view class="bottomLoad" wx:if="{{bottomLoad}}">
+  <van-loading type="spinner" color="#0bb9b6" size="24px" >加载中...</van-loading>
+</view>
