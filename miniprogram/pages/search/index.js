@@ -85,7 +85,7 @@ Page({
       
       
       const index = e.detail.index
-      this.setData({ activeTab: parseInt(index),page: 1 })
+      this.setData({ activeTab: parseInt(index),showOverlay:true,page: 1 })
       var tabs = this.data.tabs;
       var currentTab = tabs[index]
       if (!currentTab['goodsList']) {
@@ -100,12 +100,12 @@ Page({
     onShow(){
     
       if (typeof this.getTabBar === 'function' &&
-          this.getTabBar()) {
-    
-          this.getTabBar().setData({
-            active: 1
-          })
-        }
+        this.getTabBar()) {
+          
+        this.getTabBar().setData({
+          active: 1
+        })
+      }
     },
     onPullDownRefresh: function() {
       console.log('pulldown')
