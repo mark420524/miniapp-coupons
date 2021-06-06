@@ -1,6 +1,6 @@
 export default {
   // 微信云函数配置，云开发的环境ID
-   
+
   
   // 其他小程序
   otherMiniPrograms: [
