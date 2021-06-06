@@ -1,8 +1,10 @@
 {
   "pages": [
-    
+    "pages/pddindex/index",
     "pages/index/index",
     "pages/search/index",
+    "pages/newsearch/search",
+    
     "custom-tab-bar/index"
     
   ],
@@ -22,9 +24,11 @@
       "pagePath": "pages/index/index",
       "text": "组件"
     }, {
-      "pagePath": "pages/search/index",
+      "pagePath": "pages/newsearch/search",
       "text": "接口"
-    }]
+    }, {"pagePath": "pages/pddindex/index",
+    "text": "pdd"
+  }]
   },
   "usingComponents": {
    

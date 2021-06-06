@@ -142,7 +142,7 @@ Page({
             this.getTabBar()) {
               
             this.getTabBar().setData({
-              active: 0
+              active: 2
             })
           }
       }

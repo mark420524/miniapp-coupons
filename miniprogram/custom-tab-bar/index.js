@@ -6,17 +6,26 @@ Page({
      */
     data: {
         active: 0,
-        list: [{
+        list: [
+          {
+            pagePath: "/pages/pddindex/index",
+            iconPath: "coupon-o",
+            selectedIconPath: "coupon-o",
+            text: "购物"
+          },
+          {
+            pagePath: "/pages/newsearch/search",
+            iconPath: "search",
+            selectedIconPath: "search",
+            text: "查找"
+          },
+         {
             pagePath: "/pages/index/index",
             iconPath: "home-o",
             
             text: "优惠"
-          }, {
-            pagePath: "/pages/search/index",
-            iconPath: "search",
-            selectedIconPath: "search",
-            text: "查找"
-          }]
+          }
+        ]
     },
 
     onChange(event) {
