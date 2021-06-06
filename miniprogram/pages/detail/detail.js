@@ -9,6 +9,8 @@ Page({
     goods_id: [],
     search_id: "",
     detail: null,
+    goods_sign : "",
+    goods_sign_list : []
   },
 
   /**
@@ -17,9 +19,15 @@ Page({
   onLoad: function (options) {
     this.data.goods_id =  options["gid"];
     this.data.search_id = options["search_id"];
+    let goods_sign = options["goods_sign"]
+    this.data.goods_sign = goods_sign
+    let goods_sign_list = new Array();
+    goods_sign_list[0]=goods_sign;
     this.setData({
       goods_id: options["gid"],
       search_id: options["search_id"],
+      goods_sign: goods_sign,
+      goods_sign_list : goods_sign_list
     });
     this.reloadData();
   },
@@ -39,7 +47,8 @@ Page({
       name: "pquery",
       data: {
         detail: true,
-        goods_id_list: `[${this.data.goods_id}]`,
+        //goods_id_list: `[${this.data.goods_id}]`,
+        goods_sign: this.data.goods_sign,
         search_id: this.data.search_id,
       }
     })
@@ -65,7 +74,7 @@ Page({
     this.reloadData();
   },
   onShareAppMessage: function(e) {
-    let path = '/pages/detail/detail?gid=' + this.data.goods_id + '&search_id=' + this.data.search_id;
+    let path = '/pages/detail/detail?goods_sign=' + this.data.goods_sign + '&search_id=' + this.data.search_id;
     return {
       title: "这里有好多拼多多券可以领取哦~",
       path: path,
@@ -80,7 +89,7 @@ Page({
       name: "pquery",
       data: {
         generate: true,
-        goods_id_list: `[${this.data.goods_id}]`,
+        goods_sign_list: JSON.stringify( this.data.goods_sign_list),
         search_id: this.data.search_id,
       }
     }).then(res => {
@@ -103,7 +112,7 @@ Page({
   },
   gohome() {
     wx.switchTab({
-      url: '/pages/index/index',
+      url: '/pages/pddindex/index',
     });
   }
 })

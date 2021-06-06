@@ -4,7 +4,8 @@
     "pages/index/index",
     "pages/search/index",
     "pages/newsearch/search",
-    
+    "pages/detail/detail",
+    "pages/stype/stype",
     "custom-tab-bar/index"
     
   ],

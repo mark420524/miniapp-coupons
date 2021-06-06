@@ -15,7 +15,7 @@ Component({
   methods: {
     clickOnProduction: function(event) {
       wx.navigateTo({
-        url: '/pages/detail/detail?gid=' + event.currentTarget.dataset.gid + '&search_id=' + event.currentTarget.dataset.searchid,
+        url: '/pages/detail/detail?gid=' + event.currentTarget.dataset.gid + '&search_id=' + event.currentTarget.dataset.searchid + '&goods_sign=' +event.currentTarget.dataset.gsign,
       });
     },
   }

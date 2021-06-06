@@ -42,7 +42,7 @@ exports.main = async (event, context) => {
       timestamp: utils.timestamp(),
       type: "pdd.ddk.goods.promotion.url.generate",
       p_id: utils.PDDPID,
-      goods_id_list: event.goods_id_list,
+      goods_sign_list: event.goods_sign_list,
       search_id: event.search_id,
       generate_we_app: true,
     };
@@ -56,7 +56,7 @@ exports.main = async (event, context) => {
       timestamp: utils.timestamp(),
       type: "pdd.ddk.goods.detail",
       pid: utils.PDDPID,
-      goods_id_list: event.goods_id_list,
+      goods_sign: event.goods_sign,
       search_id: event.search_id,
     };
   }
