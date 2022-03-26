@@ -19,7 +19,7 @@
 
   <view class="production-tools">
     <scroll-view class="category" scroll-x="{{true}}" style="width:100%" scroll-y="{{false}}">
-      <view wx:for="{{categorys}}" class="category-item  {{s_category_oid === item.oid ? 'category-item-s' : ''}}" data-oid="{{item.oid}}" bindtap="changeCategoryId">{{item.text}}</view>
+      <view wx:for="{{categorys}}" wx:key="index" class="category-item  {{s_category_oid === item.oid ? 'category-item-s' : ''}}" data-oid="{{item.oid}}" bindtap="changeCategoryId">{{item.text}}</view>
     </scroll-view>
     <view class="tools">
       <view class="{{sort_type === 0 ? 'tool-s' : ''}}" bindtap="changeSortType" data-type="zh">综合</view>
