@@ -49,7 +49,7 @@
   <view class="detail-info" wx:if="{{detail.mall_name}}">
     <text class="detail-name">商品详情</text>
     <text class="detail-desc">{{detail.goods_desc}}</text>
-    <image wx:for="{{detail.goods_gallery_urls}}" src="{{item}}"/>
+    <image wx:for="{{detail.goods_gallery_urls}}" wx:key="index" src="{{item}}"/>
   </view>
 
   <view class="bottom-actions">

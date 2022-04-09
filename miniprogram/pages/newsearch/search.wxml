@@ -9,7 +9,7 @@
     <image bindtap="clearSearchContent" src="/images/remove.png" mode="aspectFill"/>
   </view>
   <view class="history-search" wx:if="{{productions.length == 0}}">
-    <text bindtap="onTapHistory" data-val="{{item}}" wx:for="{{historys}}">{{item}}</text>
+    <text bindtap="onTapHistory" data-val="{{item}}" wx:for="{{historys}}" wx:key="index">{{item}}</text>
   </view>
   <view class="empty-view"  wx:if="{{productions.length == 0}}">
     <image class="empty" src="/images/empty.png" mode="aspectFill"/>

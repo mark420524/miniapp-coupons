@@ -3,10 +3,10 @@
 <van-notice-bar left-icon="volume-o" text="{{notice}}" />
 <view wx:if="{{tabs.length >0}}">
     <van-tabs bind:change="onChange" active="{{ activeTab }}" swipeable>
-        <van-tab wx:for="{{tabs}}" title="{{item.title}}">
+        <van-tab wx:for="{{tabs}}" wx:key="index" title="{{item.title}}">
             <view class="container">
                 <view class="coupon">
-                    <view class="item" wx:for="{{item.coupon}}" wx:for-index="i" wx:for-item="v">
+                    <view class="item" wx:for="{{item.coupon}}" wx:key="index" wx:for-index="i" wx:for-item="v">
                         <view class="top">
                             <view class="left">
                                 <view class="content">
