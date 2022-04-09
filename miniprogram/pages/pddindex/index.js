@@ -99,7 +99,7 @@ Page({
   },
   
   gotoStype: function(event) {
-    console.log(event);
+    //console.log(event);
     wx.navigateTo({
       url: '/pages/stype/stype?type=' + event.currentTarget.dataset.type + "&title=" + event.currentTarget.dataset.title + "&banner=" + event.currentTarget.dataset.banner,
     });
