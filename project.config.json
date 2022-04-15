@@ -1,6 +1,22 @@
 {
     "miniprogramRoot": "miniprogram/",
     "cloudfunctionRoot": "functions/",
+    "packOptions": {
+        "ignore": [
+            {
+                "type": "folder",
+                "value": "screenshot"
+            },
+            {
+                "type": "folder",
+                "value": "db"
+            },
+            {
+                "type": "folder",
+                "value": ".git"
+            }
+        ]
+    },
     "setting": {
         "urlCheck": false,
         "es6": true,
