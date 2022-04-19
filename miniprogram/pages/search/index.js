@@ -93,8 +93,8 @@ Page({
       }
       
       const type = tabs[index]['_id']
-      //this.getGoods(type)
-      console.log(type)
+      this.getGoods(type, index)
+      //console.log(type)
       this.setData({goods_type:type,goodsList:currentTab['goodsList']})
   },
     onShow(){

@@ -32,9 +32,9 @@ Page({
         
         const detail = event.detail;
         this.setData({ active: detail });
-        console.log(detail)
+        //console.log(detail)
         const url = this.data.list[detail].pagePath;
-        console.log(url);
+        //console.log(url);
         wx.switchTab({url})
         
     }

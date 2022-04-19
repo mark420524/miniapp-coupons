@@ -7,7 +7,7 @@
 />
   <view wx:if="{{tabs.length >0}}">
     <van-tabs bind:change="onChange" active="{{ activeTab }}" swipeable>
-        <van-tab wx:for="{{tabs}}" data-id="{{item._id}}" title="{{item.title}}">
+        <van-tab wx:for="{{tabs}}" data-id="{{item._id}}" wx:key="index" title="{{item.title}}">
         </van-tab>
     </van-tabs>
   </view>
