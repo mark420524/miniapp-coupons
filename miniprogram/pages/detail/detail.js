@@ -89,7 +89,7 @@ Page({
       name: "pquery",
       data: {
         generate: true,
-        goods_sign_list: JSON.stringify( this.data.goods_sign_list),
+		goods_sign: this.data.goods_sign,
         search_id: this.data.search_id,
       }
     }).then(res => {

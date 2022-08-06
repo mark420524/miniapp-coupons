@@ -1,4 +1,5 @@
 //app.js
+import api from 'api/api.js'
 App({
   onLaunch: function () {
     
@@ -16,5 +17,6 @@ App({
     }
 
     this.globalData = {}
-  }
+  },
+  apis: api,
 })

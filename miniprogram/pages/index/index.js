@@ -1,6 +1,6 @@
 // miniprogram/pages/index/index.js
-const db = wx.cloud.database()
-
+const app = getApp();
+const apis = app.apis;
 Page({
 
     /**
@@ -10,17 +10,18 @@ Page({
         tabs: [],
         msg: {},
         activeTab: 0,
-        notice: '领完券记得要收藏哦, 以便下次再领'
+        notice: '不止有外卖优惠券哦，多看看，有惊喜~'
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        db.collection('coupons')
-            .where({status:1})
-            .orderBy('sort', 'asc').get().then(res => {
-            const tabs = res.data
+        let that = this;
+        apis.getCouponList('coupons')
+            .then(res => {
+
+            const tabs = res;
             let all = {
                 title: '全部',
                 icon: '../../images/all.png',
@@ -36,29 +37,24 @@ Page({
 
             tabs.unshift(all)
 
-            this.setData({ tabs })
+            that.setData({ tabs })
+        })
+        let data={
+            id:3,
+            type:'coupon'
+        }
+        apis.getShareMsg(data) .then(res => {
+            
+            that.setData({
+                msg:res
+            })
+            
         })
 
-        db.collection('share-message').get().then(res => {
-            const messages = res.data
-
-            let idx = Math.floor(Math.random() * messages.length)
-
-            this.data.msg = messages[idx]
-            console.log('分享信息', this.data.msg)
-        })
-
-        db.collection('notice').get().then(res => {
-            const notice = res.data
-            if (notice[0]) this.setData({ notice: notice[0].notice })
-
-            console.log('顶部轮播信息', this.data.notice)
-        })
     },
 
     onChange(e) {
-        console.log(e)
-        console.log(this.data.activeTab)
+        
         const index = e.detail.index
         this.setData({ activeTab: parseInt(index) })
     },
