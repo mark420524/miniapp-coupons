@@ -120,12 +120,12 @@ Page({
       optId: this.data.s_category_oid,
       page:this.data.page
     }
-    
+    let that = this;
     apis.pddSearchGoods(data)
     .then(res => {
       if (res && res.goods_search_response.goods_list) {
         const list = res.goods_search_response.goods_list;
-        this.setData({
+        that.setData({
           productions: list,
           list_id:  res.goods_search_response.list_id,
           request_id:  res.goods_search_response.request_id,
@@ -150,17 +150,18 @@ Page({
       page: this.data.page + 1,
       listId: this.data.list_id,
     }
+    let that = this;
     apis.pddSearchGoods(data).then(res => {
       wx.hideLoading();
       if (res && res.goods_search_response.goods_list) {
         const list = res.goods_search_response.goods_list;
-        this.setData({
-          productions: this.data.productions.concat(list),
+        that.setData({
+          productions: that.data.productions.concat(list),
           list_id:  res.goods_search_response.list_id,
           request_id:  res.goods_search_response.request_id,
           search_id:  res.goods_search_response.search_id,
           total_count:  res.goods_search_response.total_count,
-          page: this.data.page + 1
+          page: that.data.page + 1
         });
       }
     }).catch(err => {

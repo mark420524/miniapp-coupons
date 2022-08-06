@@ -1,5 +1,6 @@
 // pages/detail/detail.js
-
+const app = getApp();
+const apis=app.apis;
 Page({
 
   /**
@@ -43,22 +44,19 @@ Page({
     wx.showLoading({
       title: '加载中...',
     });
-    wx.cloud.callFunction({
-      name: "pquery",
-      data: {
-        detail: true,
-        //goods_id_list: `[${this.data.goods_id}]`,
-        goods_sign: this.data.goods_sign,
-        search_id: this.data.search_id,
-      }
-    })
+    let data = {
+      goodsSign: this.data.goods_sign,
+      searchId: this.data.search_id,
+    }
+    let that = this;
+    apis.pddGoodsDetail(data)
     .then(res => {
-      if (res.result && res.result._status === 0 && res.result.data && res.result.data.goods_detail_response && res.result.data.goods_detail_response.goods_details) {
-        const list = res.result.data.goods_detail_response.goods_details;
+      if (res &&  res.goods_detail_response.goods_details) {
+        const list = res.goods_detail_response.goods_details;
         if (list && list.length > 0) {
           list[0].coupon_start_time_format = this.formatDate(list[0].coupon_start_time * 1000);
           list[0].coupon_end_time_format = this.formatDate(list[0].coupon_end_time * 1000);
-          this.setData({
+          that.setData({
             detail: list[0],
           });
         }
@@ -85,17 +83,15 @@ Page({
     wx.showLoading({
       title: '处理中...',
     });
-    wx.cloud.callFunction({
-      name: "pquery",
-      data: {
-        generate: true,
-		goods_sign: this.data.goods_sign,
-        search_id: this.data.search_id,
-      }
-    }).then(res => {
+    let data=  {
+      goodsSign: this.data.goods_sign,
+      searchId: this.data.search_id,
+    }
+    apis.pddGoodsGenerate(data)
+    .then(res => {
       wx.hideLoading();
-      if (res.result && res.result._status === 0 && res.result.data && res.result.data.goods_promotion_url_generate_response && res.result.data.goods_promotion_url_generate_response.goods_promotion_url_list) {
-        const list = res.result.data.goods_promotion_url_generate_response.goods_promotion_url_list;
+      if (res.result  && res.goods_promotion_url_generate_response.goods_promotion_url_list) {
+        const list = res.goods_promotion_url_generate_response.goods_promotion_url_list;
         if (list.length > 0) {
           const r = list[0];
           if (r.we_app_info) {

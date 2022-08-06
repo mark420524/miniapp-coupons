@@ -97,6 +97,7 @@ Page({
       page:this.data.page,
       withCoupon: this.data.filterYH,
     }
+    let that = this;
     apis.pddSearchGoods(data)
    .then(res => {
       if (res  && res.goods_search_response.goods_list) {
@@ -109,12 +110,12 @@ Page({
             content: '搜索不到相关的商品',
             showCancel: false,
           });
-          this.setData({
+          that.setData({
             productions: [],
           });
           return;
         }
-        this.setData({
+        that.setData({
           productions: list,
           list_id:  res.goods_search_response.list_id,
           request_id:  res.goods_search_response.request_id,
