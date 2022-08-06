@@ -1,4 +1,6 @@
 // pages/search/search.js
+const app = getApp()
+const apis = app.apis;
 Page({
 
   /**
@@ -89,19 +91,17 @@ Page({
       title: '加载中...',
     })
     this.data.page = 1;
-
-    wx.cloud.callFunction({
-      name: "pquery",
-      data: {
-        sort_type: this.data.sort_type,
-        keyword: this.data.searchVal.trim(),
-        with_coupon: this.data.filterYH,
-      }
-    })
+    let data = {
+      sortType: this.data.sort_type,
+      keyword: this.data.searchVal.trim(),
+      page:this.data.page,
+      withCoupon: this.data.filterYH,
+    }
+    apis.pddSearchGoods(data)
    .then(res => {
-      if (res.result && res.result._status === 0 && res.result.data && res.result.data.goods_search_response && res.result.data.goods_search_response.goods_list) {
+      if (res  && res.goods_search_response.goods_list) {
         wx.stopPullDownRefresh();
-        const list = res.result.data.goods_search_response.goods_list;
+        const list = res.goods_search_response.goods_list;
         if (list.length === 0) {
           wx.hideLoading();
           wx.showModal({
@@ -116,10 +116,10 @@ Page({
         }
         this.setData({
           productions: list,
-          list_id:  res.result.data.goods_search_response.list_id,
-          request_id:  res.result.data.goods_search_response.request_id,
-          search_id:  res.result.data.goods_search_response.search_id,
-          total_count:  res.result.data.goods_search_response.total_count,
+          list_id:  res.goods_search_response.list_id,
+          request_id:  res.goods_search_response.request_id,
+          search_id:  res.goods_search_response.search_id,
+          total_count:  res.goods_search_response.total_count,
         });
       }
       wx.hideLoading();
@@ -135,25 +135,23 @@ Page({
     wx.showLoading({
       title: '加载中...',
     });
-    wx.cloud.callFunction({
-      name: "pquery",
-      data: {
-        sort_type: this.data.sort_type,
-        page: this.data.page + 1,
-        list_id: this.data.list_id,
-        keyword: this.data.searchVal.trim(),
-        with_coupon: this.data.filterYH,
-      }
-    }).then(res => {
+    let data= {
+      sortType: this.data.sort_type,
+      page: this.data.page + 1,
+      listId: this.data.list_id,
+      keyword: this.data.searchVal.trim(),
+      withCoupon: this.data.filterYH,
+    }
+    apis.pddSearchGoods(data).then(res => {
       wx.hideLoading();
-      if (res.result && res.result._status === 0 && res.result.data && res.result.data.goods_search_response && res.result.data.goods_search_response.goods_list) {
-        const list = res.result.data.goods_search_response.goods_list;
+      if (res && res.goods_search_response.goods_list) {
+        const list = res.goods_search_response.goods_list;
         this.setData({
           productions: this.data.productions.concat(list),
-          list_id:  res.result.data.goods_search_response.list_id,
-          request_id:  res.result.data.goods_search_response.request_id,
-          search_id:  res.result.data.goods_search_response.search_id,
-          total_count:  res.result.data.goods_search_response.total_count,
+          list_id:  res.goods_search_response.list_id,
+          request_id:  res.goods_search_response.request_id,
+          search_id:  res.goods_search_response.search_id,
+          total_count:  res.goods_search_response.total_count,
           page: this.data.page + 1
         });
       }
