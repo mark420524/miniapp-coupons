@@ -2,7 +2,8 @@
 
 //获取应用实例
 const app = getApp()
-import env from "../../env";
+const apis = app.apis;
+
 
 Page({
   onShareAppMessage: function() {
@@ -11,8 +12,7 @@ Page({
       path: "/pages/pddindex/index",
     }
   },
-  data: {
-    env: env,
+  data: { 
     s_category_oid: 8569,
     categorys: [
       {
@@ -115,22 +115,22 @@ Page({
       title: '加载中...',
     })
     this.data.page = 1;
-    wx.cloud.callFunction({
-      name: "pquery",
-      data: {
-        sort_type: this.data.sort_type,
-        opt_id: this.data.s_category_oid,
-      }
-    })
+    let data = {
+      sortType: this.data.sort_type,
+      optId: this.data.s_category_oid,
+      page:this.data.page
+    }
+    
+    apis.pddSearchGoods(data)
     .then(res => {
-      if (res.result && res.result._status === 0 && res.result.data && res.result.data.goods_search_response && res.result.data.goods_search_response.goods_list) {
-        const list = res.result.data.goods_search_response.goods_list;
+      if (res && res.goods_search_response.goods_list) {
+        const list = res.goods_search_response.goods_list;
         this.setData({
           productions: list,
-          list_id:  res.result.data.goods_search_response.list_id,
-          request_id:  res.result.data.goods_search_response.request_id,
-          search_id:  res.result.data.goods_search_response.search_id,
-          total_count:  res.result.data.goods_search_response.total_count,
+          list_id:  res.goods_search_response.list_id,
+          request_id:  res.goods_search_response.request_id,
+          search_id:  res.goods_search_response.search_id,
+          total_count:  res.goods_search_response.total_count,
         });
       }
       wx.stopPullDownRefresh();
@@ -144,24 +144,22 @@ Page({
     wx.showLoading({
       title: '加载中...',
     })
-    wx.cloud.callFunction({
-      name: "pquery",
-      data: {
-        sort_type: this.data.sort_type,
-        opt_id: this.data.s_category_oid,
-        page: this.data.page + 1,
-        list_id: this.data.list_id,
-      }
-    }).then(res => {
+    let data= {
+      sortType: this.data.sort_type,
+      optId: this.data.s_category_oid,
+      page: this.data.page + 1,
+      listId: this.data.list_id,
+    }
+    apis.pddSearchGoods(data).then(res => {
       wx.hideLoading();
-      if (res.result && res.result._status === 0 && res.result.data && res.result.data.goods_search_response && res.result.data.goods_search_response.goods_list) {
-        const list = res.result.data.goods_search_response.goods_list;
+      if (res && res.goods_search_response.goods_list) {
+        const list = res.goods_search_response.goods_list;
         this.setData({
           productions: this.data.productions.concat(list),
-          list_id:  res.result.data.goods_search_response.list_id,
-          request_id:  res.result.data.goods_search_response.request_id,
-          search_id:  res.result.data.goods_search_response.search_id,
-          total_count:  res.result.data.goods_search_response.total_count,
+          list_id:  res.goods_search_response.list_id,
+          request_id:  res.goods_search_response.request_id,
+          search_id:  res.goods_search_response.search_id,
+          total_count:  res.goods_search_response.total_count,
           page: this.data.page + 1
         });
       }

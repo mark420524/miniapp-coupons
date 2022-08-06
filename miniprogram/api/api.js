@@ -5,7 +5,8 @@ import {
   var url = {
     
     getShareMsg: 'share/message',
-    getCouponList:'coupons/list'
+    getCouponList:'coupons/list',
+    pddSearchGoods:'pdd/goods/search'
   }
   module.exports = {
     getShareMsg(data) { 
@@ -18,6 +19,12 @@ import {
       return http({
         url:url.getCouponList,
         method:'GET'
+      })
+    },
+    pddSearchGoods(data){
+      return http({
+        url:url.pddSearchGoods,
+        data:data
       })
     }
   }

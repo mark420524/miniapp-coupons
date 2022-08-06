@@ -16,10 +16,10 @@ export default {
   // 首页子分类进去的详情页顶部banner图片地址
   subTypeBannerImage: {
     shot:
-      "cloud://cloudprod-2gl94k7r8f6fa06d.636c-cloudprod-2gl94k7r8f6fa06d-1304539053/s-hot.jpg",
+      "http://image.siival.com/zaowanquan/s-hot.jpg",
     s19:
-      "cloud://cloudprod-2gl94k7r8f6fa06d.636c-cloudprod-2gl94k7r8f6fa06d-1304539053/s-19.jpg",
+      "http://image.siival.com/zaowanquan/s-19.jpg",
     spp:
-      "cloud://cloudprod-2gl94k7r8f6fa06d.636c-cloudprod-2gl94k7r8f6fa06d-1304539053/s-pp.jpg",
+      "http://image.siival.com/zaowanquan/s-pp.jpg",
   },
 };
