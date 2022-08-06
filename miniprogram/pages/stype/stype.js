@@ -2,7 +2,7 @@
 
 //获取应用实例
 const app = getApp()
-
+const apis = app.apis;
 Page({
   data: {
     banner: null,
@@ -30,24 +30,22 @@ Page({
       title: '加载中...',
     })
     this.data.offset = 0;
-    wx.cloud.callFunction({
-      name: "pquery",
-      data: {
-        stype: true,
-        limit: this.data.limit,
-        offset: this.data.offset,
-        channel_type: this.data.type,
-      }
-    })
+    let data =  { 
+      limit: this.data.limit,
+      offset: this.data.offset,
+      channelType: this.data.type,
+    }
+    let that = this;
+    apis.pddGoodsStype(data)
    .then(res => {
-      if (res.result && res.result._status === 0 && res.result.data && res.result.data.goods_basic_detail_response && res.result.data.goods_basic_detail_response.list) {
-        const list = res.result.data.goods_basic_detail_response.list;
-        this.setData({
+      if (res   && res.goods_basic_detail_response.list) {
+        const list = res.goods_basic_detail_response.list;
+        that.setData({
           productions: list,
-          list_id:  res.result.data.goods_basic_detail_response.list_id,
-          request_id:  res.result.data.goods_basic_detail_response.request_id,
-          search_id:  res.result.data.goods_basic_detail_response.search_id,
-          total_count:  res.result.data.goods_basic_detail_response.total_count,
+          list_id:  res.goods_basic_detail_response.list_id,
+          request_id:  res.goods_basic_detail_response.request_id,
+          search_id:  res.goods_basic_detail_response.search_id,
+          total_count:  res.goods_basic_detail_response.total_count,
         });
       }
       wx.hideLoading();
@@ -58,38 +56,37 @@ Page({
   loadNext() {
     wx.showLoading({
       title: '加载中...',
-    });
-    wx.cloud.callFunction({
-      name: "pquery",
-      data: {
-        stype: true,
-        limit: this.data.limit,
-        offset: this.data.offset + this.data.limit,
-        channel_type: this.data.type,
-      }
-    }).then(res => {
+    });    
+    let data= {
+      limit: this.data.limit,
+      offset: this.data.offset + this.data.limit,
+      channelType: this.data.type,
+    }
+    let that = this;
+    apis.pddGoodsStype(data)
+    .then(res => {
       wx.hideLoading();
-      if (res.result && res.result._status === 0 && res.result.data && res.result.data.goods_basic_detail_response && res.result.data.goods_basic_detail_response.list) {
-        const list = res.result.data.goods_basic_detail_response.list;
-        this.setData({
-          productions: this.data.productions.concat(list),
-          list_id:  res.result.data.goods_basic_detail_response.list_id,
-          request_id:  res.result.data.goods_basic_detail_response.request_id,
-          search_id:  res.result.data.goods_basic_detail_response.search_id,
-          total_count:  res.result.data.goods_basic_detail_response.total_count,
-          offset: this.data.offset + this.data.limit,
+      if (res && res.goods_basic_detail_response.list) {
+        const list = res.goods_basic_detail_response.list;
+        that.setData({
+          productions: that.data.productions.concat(list),
+          list_id:  res.goods_basic_detail_response.list_id,
+          request_id:  res.goods_basic_detail_response.request_id,
+          search_id:  res.goods_basic_detail_response.search_id,
+          total_count:  res.goods_basic_detail_response.total_count,
+          offset: that.data.offset + that.data.limit,
         });
       }
-    }).catch(err => {
-      wx.hideLoading();
-    });
+    }) 
   },
   onLoad: function (option) {
+    
     this.data.type = option.type;
     wx.setNavigationBarTitle({
       title: option.title,
     });
     if (option.banner) {
+      
       this.setData({
         banner: option.banner.trim()
       });

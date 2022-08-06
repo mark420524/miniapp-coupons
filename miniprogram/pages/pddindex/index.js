@@ -96,6 +96,14 @@ Page({
     // 排序方式:0-综合排序;3-按价格升序;4-按价格降序;6-按销量降序;12-按照加入多多进宝时间降序;;8-优惠券金额排序降序
     sort_type: 0,
     page: 1,
+    subTypeBannerImage: {
+      shot:
+        "http://image.siival.com/zaowanquan/subhot.jpg",
+      s19:
+        "http://image.siival.com/zaowanquan/sub19.jpg",
+      spp:
+        "http://image.siival.com/zaowanquan/subpp.jpg",
+    }
   },
   
   gotoStype: function(event) {

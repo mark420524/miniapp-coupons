@@ -1,6 +1,5 @@
 {
     "miniprogramRoot": "miniprogram/",
-    "cloudfunctionRoot": "functions/",
     "packOptions": {
         "ignore": [
             {

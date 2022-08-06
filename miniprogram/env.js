@@ -14,12 +14,5 @@ export default {
   // 拼多多appid
   pddAppId: "wx32540bd863b27570",
   // 首页子分类进去的详情页顶部banner图片地址
-  subTypeBannerImage: {
-    shot:
-      "http://image.siival.com/zaowanquan/s-hot.jpg",
-    s19:
-      "http://image.siival.com/zaowanquan/s-19.jpg",
-    spp:
-      "http://image.siival.com/zaowanquan/s-pp.jpg",
-  },
+ 
 };

@@ -1,5 +1,5 @@
 // miniprogram/pages/index/index.js
-const db = wx.cloud.database()
+
 Page({
 
     /**
@@ -19,9 +19,7 @@ Page({
         bottomLoad:false
     },
     onLoad: function (options) {
-      db.collection('goods_type')
-          .where({status:1})
-          .orderBy('sort', 'asc').get().then(res => {
+      apis.getGoodsType() .then(res => {
             console.log(res)
           const tabs = res.data
           this.setData({ tabs })

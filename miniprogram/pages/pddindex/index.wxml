@@ -2,15 +2,15 @@
 <view class="container">
   <view class="menu">
     <!-- // 0-1.9包邮, 1-今日爆款, 2-品牌好货,3-相似商品推荐,4-猜你喜欢,5-实时热销,6-实时收益,7-今日畅销,8-高佣榜单，默认1 -->
-    <view class="menu-item" bindtap="gotoStype" data-type="{{5}}" data-title="爆款排行" data-banner="{{env.subTypeBannerImage.shot}}">
+    <view class="menu-item" bindtap="gotoStype" data-type="{{5}}" data-title="爆款排行" data-banner="{{subTypeBannerImage.shot}}">
       <image src="/images/hot.png" mode="aspectFit"/>
       <text>爆款排行</text>
     </view>
-    <view class="menu-item" bindtap="gotoStype" data-type="{{0}}" data-title="1.9包邮" data-banner="{{env.subTypeBannerImage.s19}}">
+    <view class="menu-item" bindtap="gotoStype" data-type="{{0}}" data-title="1.9包邮" data-banner="{{subTypeBannerImage.s19}}">
       <image src="/images/99.png" mode="aspectFit"/>
       <text>1.9包邮</text>
     </view>
-    <view class="menu-item" bindtap="gotoStype" data-type="{{2}}" data-title="品牌好货" data-banner="{{env.subTypeBannerImage.spp}}">
+    <view class="menu-item" bindtap="gotoStype" data-type="{{2}}" data-title="品牌好货" data-banner="{{subTypeBannerImage.spp}}">
       <image src="/images/pp.png" mode="aspectFit"/>
       <text>品牌好货</text>
     </view>
