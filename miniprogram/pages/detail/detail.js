@@ -90,7 +90,7 @@ Page({
     apis.pddGoodsGenerate(data)
     .then(res => {
       wx.hideLoading();
-      if (res.result  && res.goods_promotion_url_generate_response.goods_promotion_url_list) {
+      if (res && res.goods_promotion_url_generate_response.goods_promotion_url_list) {
         const list = res.goods_promotion_url_generate_response.goods_promotion_url_list;
         if (list.length > 0) {
           const r = list[0];
